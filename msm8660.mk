@@ -50,7 +50,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
-    libaudio-resampler \ 
+    libaudio-resampler \
     libaudioutils
 
 # GalaxyS2Settings
