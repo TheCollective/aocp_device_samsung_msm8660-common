@@ -18,6 +18,7 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/msm8660-common/include
 TARGET_BOARD_PLATFORM := msm8660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_ARCH_VARIANT_CPU := cortex-a8
+TARGET_CPU_VARIANT := cortex-a8
 TARGET_CPU_SMP := true
 
 # inherit from qcom-common
@@ -50,6 +51,8 @@ WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/wifi/bcmdhd_p2p.bin"
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_FSTAB := device/samsung/msm8660-common/rootdir/etc/fstab.qcom
+RECOVERY_FSTAB_VERSION := 2
 
 # Adreno configuration
 BOARD_EGL_CFG := device/samsung/msm8660-common/configs/egl.cfg
@@ -75,7 +78,16 @@ BOARD_CAMERA_USE_MM_HEAP := true
 # Workaround to avoid issues with legacy liblights on QCOM platforms
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Audio
+BOARD_USES_LEGACY_ALSA_AUDIO := true
+
 # Samsung VoIP/call routing
 BOARD_HAVE_SAMSUNG_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_VOIP_ENABLED -DUSE_SAMSUNG_VOIP_DEVICE -DQCOM_ACDB_ENABLED
+COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED
+
+# To handle radio version checks
+TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/msm8660-common
+
+# Use legacy MM heap behavior
+TARGET_DISPLAY_INSECURE_MM_HEAP := true
 
